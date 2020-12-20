@@ -31,7 +31,6 @@ protected:
 
 	auto zig(node_p n) -> node_p
 	{
-		cout << "zig: " << n->key << endl;
 		node_p aux = n->right;
 		n->right = aux->left;
 		aux->left = n;
@@ -41,7 +40,6 @@ protected:
 
 	auto zag(node_p n) -> node_p
 	{
-		cout << "zag: " << n->key << endl;
 		node_p aux = n->left;
 		n->left = aux->right;
 		aux->right = n;

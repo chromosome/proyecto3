@@ -35,7 +35,6 @@ class splay_tree : public binary_search_tree<T, Node>
 		{
 			return n;
 		}
-		cout << "key: " << key << ", node: " << n->key << endl;
 
 		// llave en el arbol derecho
 		if (key > n->key)
@@ -49,28 +48,17 @@ class splay_tree : public binary_search_tree<T, Node>
 			if (key > n->right->key)
 			{
 				n->right->right = splay(n->right->right, key);
-				this->print();
 
-				// if (n->right->right == nullptr)
-				// 	return n->right;
-				cout << "2: ";
 				n = this->zig(n);
-				// cout << "node: " << n->key << endl;
-				cout << "root:" << this->m_root->key << endl;
-				this->print();
 			}
 			// zig-zag
 			else
 			{
 				n->right->left = splay(n->right->left, key);
-				this->print();
 
 				if (n->right->left != nullptr)
 				{
-					// return n->right;
-					cout << "3: ";
 					n->right = this->zag(n->right);
-					this->print();
 				}
 			}
 
@@ -80,9 +68,7 @@ class splay_tree : public binary_search_tree<T, Node>
 			}
 			else
 			{
-				cout << "1: ";
 				return this->zig(n);
-				// this->print();
 			}
 		}
 
@@ -96,14 +82,8 @@ class splay_tree : public binary_search_tree<T, Node>
 			if (key > n->left->key)
 			{
 				n->left->right = splay(n->left->right, key);
-				this->print();
 
-				// if (n->left->left == nullptr)
-					// return n->left;
-
-				cout << "3: ";
 				n->left = this->zig(n->left);
-				this->print();
 			}
 			// zag-zag
 			else
@@ -112,10 +92,7 @@ class splay_tree : public binary_search_tree<T, Node>
 
 				if (n->left->left != nullptr)
 				{
-					cout << "2: ";
-					n = this->zag(n);
-					this->print();
-					
+					n = this->zag(n);					
 				}
 			}
 
@@ -125,7 +102,6 @@ class splay_tree : public binary_search_tree<T, Node>
 			}
 			else
 			{
-				cout << "1: ";
 				return this->zag(n);
 			}
 		}
