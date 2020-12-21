@@ -13,7 +13,7 @@ template <typename K>
 struct binary_search_tree_node : public node<K, binary_search_tree_node<K>>
 {
 	// using node_p = typename node<K, binary_search_tree_node<K>>::node_p;
-	using typename node<K, binary_search_tree_node<K>>::node_p;
+	// using typename node<K, binary_search_tree_node<K>>::node_p;
 
 	binary_search_tree_node(K _key = {})
 	: node<K, binary_search_tree_node<K>>(_key)
@@ -31,6 +31,7 @@ protected:
 
 	auto zig(node_p n) -> node_p
 	{
+		cout << "zig" << endl;
 		node_p aux = n->right;
 		n->right = aux->left;
 		aux->left = n;
@@ -40,6 +41,7 @@ protected:
 
 	auto zag(node_p n) -> node_p
 	{
+		cout << "zag" << endl;
 		node_p aux = n->left;
 		n->left = aux->right;
 		aux->right = n;
